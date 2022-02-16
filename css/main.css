@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.img img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+}
+
+.img-gallery-container {
+    width: 1020px;
+    margin: 100px auto;
+}
