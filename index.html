@@ -20,14 +20,16 @@
         <div class="img"><img src="/assests/jim_halpert-meme.jpeg" alt="">
         </div> -->
     </div>
-    <canvas class="canvas" width="500 " height="500"></canvas>
-    <div class="tools">
-        <input type="text" name="text" placeholder="enter a text">
-        <button name="addText" onclick="onAddLineText()">add text</button>
-        <input type="color" name="color" onchange="onChangeColor(this)" >
-        <button name="fontBig" onclick="onFontBig()">+</button>
-        <button name="fontSmall" onclick="onFontSmall()">-</button>
-
+    <div class="canvas-container flex">
+        <canvas class="canvas" width="500 " height="500"></canvas>
+        <div class="tools">
+            <button class="back-to-gallery" onclick="backToGallery()">back to gallery</button>
+            <input type="text" name="text" placeholder="enter a text">
+            <button name="addText" onclick="onAddLineText()">add text</button>
+            <input type="color" name="color" onchange="onChangeColor(this)">
+            <button name="fontBig" onclick="onFontBig()">+</button>
+            <button name="fontSmall" onclick="onFontSmall()">-</button>
+        </div>
     </div>
     <script src="js/galleryController.js"></script>
     <script src="js/main.js"></script>

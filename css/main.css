@@ -20,3 +20,17 @@ body {
     width: 1020px;
     margin: 100px auto;
 }
+
+.canvas-container {
+    width: 1024px;
+    margin: 100px auto;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+    display: flex;
+}
