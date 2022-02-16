@@ -2,26 +2,117 @@
 
 
 
-var gImgs =[{
-    id: 1,
-    url: 'assests/barka-obama-meme.jpeg',
-    keywords: ['politics', 'obama']
-},
-{
-    id: 2,
-    url: 'assests/chad-meme.png',
-    keywords: ['chad', 'guy']
-},
-{
-    id: 3,
-    url: 'assests/jim_halpert-meme.jpeg',
-    keywords: ['office', 'jim']
-}
+var gImgs = [{
+        id: 1,
+        url: 'assests/img/1.jpg',
+        keywords: ['politics', 'obama']
+    },
+    {
+        id: 2,
+        url: 'assests/img/2.jpg',
+        keywords: ['politics', 'obama']
+    },
+    {
+        id: 3,
+        url: 'assests/img/3.jpg',
+        keywords: ['politics', 'obama']
+    },
+    {
+        id: 4,
+        url: 'assests/img/4.jpg',
+        keywords: ['politics', 'obama']
+    },
+    {
+        id: 5,
+        url: 'assests/img/5.jpg',
+        keywords: ['politics', 'obama']
+    },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+    // {
+    //     id: 1,
+    //     url: 'assests/img/1.jpg',
+    //     keywords: ['politics', 'obama']
+    // },
+
 ];
 
-function getImgs(){
+function getImgs() {
 
-  return gImgs;
+    return gImgs;
 }
 
 

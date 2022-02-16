@@ -10,7 +10,6 @@ var gMeme = {
         size: 20,
         align: 'left',
         color: 'red'
-
     }]
 };
 
@@ -32,6 +31,15 @@ function setId(id) {
     gMeme.selectedImgId = id;
 }
 
+function changeColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].color = color;
+    // gMeme.lines.forEach(line => {
+    //     if (line.id === gMeme.selectedLineIdx) {
+    //         line.color = color
+    //     };
+    // });
+    // gMeme.lines[0].color = color;
+};
 
 function addLineText() {
     gMeme.lines.push({

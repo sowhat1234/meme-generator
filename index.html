@@ -10,25 +10,55 @@
 </head>
 
 <body onload="init()">
-    <div class="img-gallery-container flex">
-        <!-- <div class="img">
-            <img src="assests/barka-obama-meme.jpeg" alt="">
-        </div>
-        <div class="img">
-            <img src="/assests/chad-meme.png" alt="">
-        </div>
-        <div class="img"><img src="/assests/jim_halpert-meme.jpeg" alt="">
-        </div> -->
+    <!-- main-header -->
+    <div class="header-bg">
+        <header class="main-header main-layout flex space-between">
+            <!-- left -->
+            <div class="logo">
+                <img src="assests/LOGO.png" alt="">
+            </div>
+            <!-- right -->
+            <div class="nav">
+                <button onclick="backToGallery()">Gallery</button>
+                <a href="">About</a>
+            </div>
+        </header>
     </div>
-    <div class="canvas-container flex">
-        <canvas class="canvas" width="500 " height="500"></canvas>
-        <div class="tools">
-            <button class="back-to-gallery" onclick="backToGallery()">back to gallery</button>
-            <input type="text" name="text" placeholder="enter a text">
-            <button name="addText" onclick="onAddLineText()">add text</button>
-            <input type="color" name="color" onchange="onChangeColor(this)">
-            <button name="fontBig" onclick="onFontBig()">+</button>
-            <button name="fontSmall" onclick="onFontSmall()">-</button>
+
+    <!-- main-content  -->
+
+    <div class="main-content-bg">
+
+
+        <!-- search bar + keyword-->
+        <div class="content-nav main-layout">
+            <!-- left -->
+            <div class="search-bg">
+                <div class="search">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </div>
+            </div>
+
+            <!-- right -->
+        </div>
+
+
+
+
+
+
+        <div class="img-gallery-container flex">
+        </div>
+        <div class="canvas-container flex">
+            <canvas class="canvas" width="500 " height="500"></canvas>
+            <div class="tools">
+                <input type="text" name="text" placeholder="enter a text">
+                <button name="addText" onclick="onAddLineText()">add text</button>
+                <input type="color" name="color" onchange="onChangeColor(this.value)">
+                <button name="fontBig" onclick="onFontBig()">+</button>
+                <button name="fontSmall" onclick="onFontSmall()">-</button>
+            </div>
         </div>
     </div>
     <script src="js/galleryController.js"></script>
