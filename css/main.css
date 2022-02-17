@@ -50,7 +50,7 @@ body {
 }
 
 .main-layout {
-    width: 1020px;
+    width: 1200px;
     margin: 0 auto;
 }
 
@@ -135,9 +135,20 @@ input[type="search"]:focus {
 }
 
 .img-gallery-container {
-    width: 1020px;
+    width: 1200px;
     margin: 100px auto;
     gap: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+
+@media (max-width: 1220px) {
+    .img-gallery-container {
+        max-width: 1020px;
+    }
+    .main-layout {
+        max-width: 1020px;
+    }
 }
 
 @media (max-width: 1020px) {

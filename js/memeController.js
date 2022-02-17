@@ -6,27 +6,29 @@ function renderMeme() {
     img.src = `${meme.selectedUrl}`;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-        drawText(meme.lines[0].txt, 50, 50, meme.lines.color);
+        // drawText(meme.lines[0].txt, 50, 50, meme.lines[0].color);
 
-        //     for (let i = 0; i < meme.lines.length; i++) {
-        //         if (i === 0) {
-        //             drawText(meme.lines[i].txt, 50, 50);
-        //         } else {
-        //             drawText(meme.lines[i].txt, 50, 100);
-        //         }
-        //     }
-        // }
+            for (let i = 0; i < meme.lines.length; i++) {
+                var txt = meme.lines[i].txt;
+                var color = meme.lines[i].color
+                var size = meme.lines[i].size;
+                if (i === 0) {
+                    drawText(txt, 50, 50,color,size);
+                } else {
+                    drawText(txt, 50, 100,color,size);
+                }
+            }
+        }
     }
-}
 
 
 
 
-function drawText(text, x, y, color = 'red') {
 
-    gCtx.font = '30px Serif';
+function drawText(text, x, y, color,size) {
+    gCtx.font = `${size}px Serif`;
     gCtx.lineWidth = 4;
-    gCtx.strokeStyle = 'brown';
+    gCtx.strokeStyle = color;
     gCtx.fillStyle = color;
     gCtx.fillText(text, x, y);
     gCtx.strokeText(text, x, y);

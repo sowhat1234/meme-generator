@@ -19,32 +19,69 @@ function getMeme() {
 
 
 function setLineTxt(txt) {
-    gMeme.lines[0].txt = txt;
-}
+    gMeme.lines.forEach(line=>{
+        if(line.id === gMeme.selectedLineIdx){
+            line.txt = txt;
+        };
+    });
+};
 
 
 function setImg(url) {
     gMeme.selectedUrl = url;
 }
 
-function setId(id) {
+function setImgId(id) {
     gMeme.selectedImgId = id;
 }
 
+function getSelectedLine(){
+    return gMeme.lines.forEach(line=>{
+        if(line.id === gMeme.selectedLineIdx){
+            return line;
+        }
+    })
+}
+
+function updateLineId(){
+    var length = gMeme.lines.length;
+    if(gMeme.selectedLineIdx < length){
+        gMeme.selectedLineIdx++
+    }else if(gMeme.selectedLineIdx === length){
+        gMeme.selectedLineIdx = 1;
+    }
+    
+}
+
 function changeColor(color) {
-    gMeme.lines[gMeme.selectedLineIdx].color = color;
-    // gMeme.lines.forEach(line => {
-    //     if (line.id === gMeme.selectedLineIdx) {
-    //         line.color = color
-    //     };
-    // });
+    // gMeme.lines[gMeme.selectedLineIdx].color = color;
+    gMeme.lines.forEach(line => {
+        if (line.id === gMeme.selectedLineIdx) {
+            line.color = color
+        };
+    });
     // gMeme.lines[0].color = color;
 };
+
+function addFontSize(){
+    gMeme.lines.forEach(line => {
+        if (line.id === gMeme.selectedLineIdx) {
+            line.size++;
+        };
+    });
+}
+function decFontSize(){
+    gMeme.lines.forEach(line => {
+        if (line.id === gMeme.selectedLineIdx) {
+            line.size--;
+        };
+    });
+}
 
 function addLineText() {
     gMeme.lines.push({
         id: gMeme.lines.length + 1,
-        txt: '',
+        txt: 'newText',
         size: 20,
         align: 'left',
         color: 'red'

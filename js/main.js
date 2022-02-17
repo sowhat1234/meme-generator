@@ -7,22 +7,34 @@ var textInput = document.querySelector('[name="text"]');
 var hideGallery = document.querySelector('.img-gallery-container');
 var showCanvas = document.querySelector('.canvas-container');
 var contentNav = document.querySelector('.content-nav');
+var searchFilter = document.getElementById('searchInput');
 
 textInput.addEventListener('keyup', () => {
     setLineTxt(textInput.value);
     renderMeme();
 })
 
+searchFilter.addEventListener('keyup',(e) => {
+    getImgKeyword(e.target.value);
+})
+
 function init() {
-    renderImg()
+    renderImg(getImgs());
     renderCanvas();
 }
 
 
+function downloadImg() {
+    var elLink = gMeme.selectedUrl
+    var imgContent = gElCanvas.toDataURL()
+    elLink.href = imgContent
+    elLink.dowmload = 'my-img.jpg'
+    // doesnt work
+}
 
 function onImgSelect(url, id) {
     setImg(url.src);
-    setId(id);
+    setImgId(id);
     hideGallery.classList.add('hide')
     showCanvas.classList.add('show')
     showCanvas.classList.remove('hide')
@@ -49,22 +61,33 @@ function onAddLineText() {
 
 
 function onChangeColor(color) {
-    // gCtx.fillStyle
+    
     changeColor(color);
-    // gCtx.fillStyle = color;
-    // var meme = getMeme();
-    // meme.lines.forEach(line => {
-    //     if (line.id === meme.selectedLineIdx) {
-    //         line.color = color;
-    //         gCtx.fillStyle = color;
-    // }
-    // })
     renderMeme();
-
-
-    // })
 }
 
+
+function onFontBig(){
+    addFontSize();
+    renderMeme();
+}
+function onFontSmall(){
+    decFontSize();
+    renderMeme();
+}
+
+function onChangeLineFocus(){
+    updateLineId();
+    updateInputText();
+    renderMeme();
+};
+
+function updateInputText(){
+    textInput.value = '';
+    var lineText = getSelectedLine();
+    
+    textInput.value = lineText ? lineText.txt : '';
+}
 
 function renderCanvas() {
     gElCanvas = document.querySelector('.canvas');

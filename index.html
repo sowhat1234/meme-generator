@@ -38,7 +38,7 @@
             <!-- left -->
             <div class="search-bg">
                 <div class="search">
-                    <input type="search" placeholder="Search...">
+                    <input type="search" id="searchInput" placeholder="Search...">
                     <button type="submit">Search</button>
                 </div>
             </div>
@@ -61,6 +61,8 @@
                 <input type="color" name="color" onchange="onChangeColor(this.value)">
                 <button name="fontBig" onclick="onFontBig()">+</button>
                 <button name="fontSmall" onclick="onFontSmall()">-</button>
+                <button class="switch-line" onclick="onChangeLineFocus()">Switch line</button>
+                <button onclick="downloadImg()">Download</button>
             </div>
         </div>
     </div>
