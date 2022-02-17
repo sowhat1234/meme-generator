@@ -50,12 +50,13 @@ body {
 }
 
 .main-layout {
-    width: 1020px;
+    width: 1200px;
     margin: 0 auto;
 }
 
 .content-nav {
     margin-block-start: 20px;
+    padding-top: 10px;
 }
 
 .main-content-bg {
@@ -134,16 +135,132 @@ input[type="search"]:focus {
 }
 
 .img-gallery-container {
-    width: 1020px;
+    width: 1200px;
     margin: 100px auto;
     gap: 10px;
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 1220px) {
     .img-gallery-container {
-        width: 720px;
+        max-width: 1020px;
+    }
+    .main-layout {
+        max-width: 1020px;
     }
 }
+
+@media (max-width: 1020px) {
+    .img-gallery-container {
+        max-width: 700px;
+    }
+    .main-layout {
+        max-width: 700px;
+    }
+}
+
+@media(max-width:740px) {
+    .img-gallery-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        max-width: 600px;
+        padding: 15px;
+        width: unset;
+        gap: 20px;
+    }
+    input[type="search"] {
+        width: 93vw;
+    }
+    .search {
+        width: 93vw;
+    }
+    .search-bg {
+        width: 93vw;
+    }
+    .main-header {
+        max-width: 600px;
+        padding: 15px;
+        width: unset;
+    }
+    .nav {
+        display: none;
+    }
+    /* hamburger only for display not working fix it. */
+}
+
+
+/* toggle menu */
+
+@media (max-width: 740px) {
+    .nav {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 300;
+        background: #292929;
+        height: 100vh;
+        transition: transform 1s;
+        transform: translate(100%, 0);
+    }
+    .open .nav {
+        transform: translate(0, 0);
+    }
+    .nav a {
+        height: auto;
+        line-height: 1;
+        padding: 20px 0;
+        width: 60vw;
+        border: none;
+        border-bottom: 1px solid #1e1e1e;
+    }
+    .nav a.active {
+        border-width: 1px;
+    }
+}
+
+.toggle-menu-screen {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: rgba(42, 42, 42, 0.6);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transition: opacity .5s;
+}
+
+@media (max-width: 740px) {
+    .toggle-menu-screen {
+        display: block;
+    }
+}
+
+.open .toggle-menu-screen {
+    visibility: visible;
+    opacity: 1;
+}
+
+.toggle-menu-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.75rem;
+    padding: 20px;
+    display: none;
+}
+
+@media (max-width: 740px) {
+    .toggle-menu-btn {
+        display: block;
+    }
+}
+
+
+/* end toggle menu  */
 
 .canvas-container {
     width: 1024px;

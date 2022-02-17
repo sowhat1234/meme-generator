@@ -18,11 +18,14 @@
                 <img src="assests/LOGO.png" alt="">
             </div>
             <!-- right -->
-            <div class="nav">
+            <div class="nav" id="mainMenu">
                 <button onclick="backToGallery()">Gallery</button>
                 <a href="">About</a>
             </div>
+            <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu">☰</button>
+            <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
         </header>
+
     </div>
 
     <!-- main-content  -->
@@ -65,6 +68,13 @@
     <script src="js/main.js"></script>
     <script src="js/memeService.js"></script>
     <script src="js/memeController.js"></script>
+    <script>
+        function toggleMenu() {
+            var mainMenu = document.getElementById('mainMenu');
+            console.log(mainMenu);
+            mainMenu.classList.toggle('open');
+        }
+    </script>
 </body>
 
 </html>
