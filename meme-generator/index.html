@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Meme-Generator</title>
+</head>
+
+<body onload="init()">
+    <!-- main-header -->
+    <div class="header-bg">
+        <header class="main-header main-layout flex space-between">
+            <!-- left -->
+            <div class="logo">
+                <img src="assests/LOGO.png" alt="">
+            </div>
+            <!-- right -->
+            <div class="nav" id="mainMenu">
+                <button onclick="backToGallery()">Gallery</button>
+                <a href="">About</a>
+            </div>
+            <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu">☰</button>
+            <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
+        </header>
+
+    </div>
+
+    <!-- main-content  -->
+
+    <div class="main-content-bg">
+
+
+        <!-- search bar + keyword-->
+        <div class="content-nav main-layout">
+            <!-- left -->
+            <div class="search-bg">
+                <div class="search">
+                    <input type="search" id="searchInput" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </div>
+            </div>
+
+            <!-- right -->
+        </div>
+
+
+
+
+
+
+        <div class="img-gallery-container flex">
+        </div>
+        <div class="canvas-container flex">
+            <canvas class="canvas" width="500 " height="500"></canvas>
+            <div class="tools">
+                <input type="text" name="text" placeholder="enter a text">
+                <button name="addText" onclick="onAddLineText()">add text</button>
+                <input type="color" name="color" onchange="onChangeColor(this.value)">
+                <button name="fontBig" onclick="onFontBig()">+</button>
+                <button name="fontSmall" onclick="onFontSmall()">-</button>
+                <button class="switch-line" onclick="onChangeLineFocus()">Switch line</button>
+                <button onclick="downloadImg()">Download</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/galleryController.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/memeService.js"></script>
+    <script src="js/memeController.js"></script>
+    <script>
+        function toggleMenu() {
+            var mainMenu = document.getElementById('mainMenu');
+            console.log(mainMenu);
+            mainMenu.classList.toggle('open');
+        }
+    </script>
+</body>
+
+</html>
