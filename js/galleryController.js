@@ -130,9 +130,7 @@ function getImgKeyword(str) {
                     filteredImgs.push(gImgs[i]);
                 }
             }
-
         })
-
     }
     renderImg(filteredImgs);
 }

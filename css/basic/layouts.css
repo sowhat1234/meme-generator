@@ -1,0 +1,17 @@
+.main-layout {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.img-gallery-container {
+    width: 1200px;
+    margin: 100px auto;
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 220px);
+}
+
+.canvas-container {
+    width: 1024px;
+    margin: 100px auto;
+}

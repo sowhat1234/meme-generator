@@ -1,0 +1,121 @@
+@media (max-width: 1220px) {
+    .img-gallery-container {
+        max-width: 1020px;
+    }
+    .main-layout {
+        max-width: 1020px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .img-gallery-container {
+        max-width: 700px;
+        grid-template-columns: repeat(4, 180px);
+    }
+    .main-layout {
+        max-width: 700px;
+    }
+}
+
+@media(max-width:740px) {
+    .img-gallery-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        max-width: 600px;
+        padding: 15px;
+        width: unset;
+        gap: 20px;
+    }
+    .hide {
+        display: none;
+    }
+    input[type="search"] {
+        width: 93vw;
+    }
+    .search {
+        width: 93vw;
+    }
+    .search-bg {
+        width: 93vw;
+    }
+    .main-header {
+        max-width: 600px;
+        padding: 15px;
+        width: unset;
+    }
+    .nav {
+        display: none;
+    }
+    /* hamburger only for display not working fix it. */
+    /* didn't make it *sad-smiley-face* */
+}
+
+@media (max-width: 740px) {
+    .nav {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 300;
+        background: #292929;
+        height: 100vh;
+        transition: transform 1s;
+        transform: translate(100%, 0);
+    }
+    .open .nav {
+        transform: translate(0, 0);
+    }
+    .nav a {
+        height: auto;
+        line-height: 1;
+        padding: 20px 0;
+        width: 60vw;
+        border: none;
+        border-bottom: 1px solid #1e1e1e;
+    }
+    .nav a.active {
+        border-width: 1px;
+    }
+}
+
+@media (max-width: 740px) {
+    .toggle-menu-screen {
+        display: block;
+    }
+}
+
+@media (max-width: 740px) {
+    .toggle-menu-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 900px) {
+    .tools {
+        margin-left: unset;
+    }
+}
+
+@media (max-width: 1020px) {
+    .main-layout {
+        max-width: unset;
+        width: unset;
+    }
+}
+
+@media (max-width: 830px) {
+    .show {
+        flex-direction: column;
+    }
+    .canvas {
+        width: max-content;
+    }
+    .main-layout {
+        width: unset;
+    }
+    .canvas-container {
+        width: unset;
+        justify-content: center;
+        align-items: center;
+    }
+}

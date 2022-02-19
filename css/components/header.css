@@ -1,0 +1,21 @@
+.logo img {
+    height: 80px;
+    width: 130px;
+    object-fit: contain;
+}
+
+.logo img:hover {
+    cursor: pointer;
+}
+
+.logo {
+    margin-left: 40px;
+}
+
+.header-bg {
+    background-image: linear-gradient(to right, #139FAC, #2DB879);
+    border-radius: 40px;
+    border-bottom: solid;
+    border-top: groove;
+    margin-top: 10px;
+}

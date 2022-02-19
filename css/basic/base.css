@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #22252C;
+}
+
+input {
+    border-radius: 5px;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+a {
+    background: none;
+    text-decoration: none;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+    display: flex;
+}
+
+.img img {
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.img img:hover {
+    transform: translateY(10px);
+    transition: 0.3s;
+    cursor: pointer;
+}

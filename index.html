@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Meme-Generator</title>
 </head>
 
@@ -15,7 +15,7 @@
         <header class="main-header main-layout flex space-between">
             <!-- left -->
             <div class="logo">
-                <img src="assests/LOGO.png" alt="">
+                <img onclick="backToGallery()" src="assests/LOGO.png" alt="">
             </div>
             <!-- right -->
             <div class="nav" id="mainMenu">
@@ -31,8 +31,6 @@
     <!-- main-content  -->
 
     <div class="main-content-bg">
-
-
         <!-- search bar + keyword-->
         <div class="content-nav main-layout">
             <!-- left -->
@@ -42,27 +40,41 @@
                     <button type="submit">Search</button>
                 </div>
             </div>
-
             <!-- right -->
         </div>
 
-
-
-
-
-
-        <div class="img-gallery-container flex">
+        <div class="img-gallery-container">
         </div>
-        <div class="canvas-container flex">
+        <div class="canvas-container main-layout">
             <canvas class="canvas" width="500 " height="500"></canvas>
             <div class="tools">
-                <input type="text" name="text" placeholder="enter a text">
-                <button name="addText" onclick="onAddLineText()">add text</button>
-                <input type="color" name="color" onchange="onChangeColor(this.value)">
-                <button name="fontBig" onclick="onFontBig()">+</button>
-                <button name="fontSmall" onclick="onFontSmall()">-</button>
-                <button class="switch-line" onclick="onChangeLineFocus()">Switch line</button>
-                <button onclick="downloadImg()">Download</button>
+                <div class="tool-one">
+                    <input type="text" name="text" placeholder="enter a text">
+                </div>
+                <div class="tool-two">
+
+                    <button name="addText" class="add-text" onclick="onAddLineText()"><img src="assests/icons/add.png" alt=""></button>
+                    <button class="switch-line" onclick="onChangeLineFocus()"><img src="assests/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                    <button class="delete-btn" name="delete-btn" onclick="onRemoveLine()"><img src="assests/icons/trash.png" alt=""></button>
+                </div>
+                <div class="tool-three">
+
+                    <input type="color" name="color" onchange="onChangeColor(this.value)">
+                    <img src="assests/icons/paint-board-and-brush.png" class="color-input" alt="">
+                    <input type="color" name="colorStroke" onchange="onStrokeChangeColor(this.value)">
+                    <button name="fontBig" onclick="onFontBig()"><img src="assests/icons/increase font - icon.png" alt=""></button>
+                    <button name="fontSmall" onclick="onFontSmall()"><img src="assests/icons/decrease font - icon.png" alt=""></button>
+                </div>
+                <div class="tool-four">
+
+                    <a class="download-btn" onclick="downloadImg(this)">Download</a>
+                    <button class="share-btn" onclick="uploadImg()">Share</button>
+
+                    <input type="file" id="file" class="inputfile" name="image" onchange="onUploadOwnImg(event)" />
+                </div>
+                <p class="user-msg"></p>
+                <div class="share-container"></div>
+
             </div>
         </div>
     </div>
@@ -70,6 +82,7 @@
     <script src="js/main.js"></script>
     <script src="js/memeService.js"></script>
     <script src="js/memeController.js"></script>
+    <script src="js/upload-share.js"></script>
     <script>
         function toggleMenu() {
             var mainMenu = document.getElementById('mainMenu');

@@ -1,0 +1,103 @@
+.canvas {
+    border-radius: 20px;
+}
+
+.tools {
+    display: flex;
+    flex-direction: column;
+    margin-left: 75px;
+    align-items: center;
+}
+
+.tool-one input {
+    width: 300px;
+    text-align: center;
+    border-radius: 25px;
+    padding-block-start: 15px;
+    padding-block-end: 15px;
+    padding-inline-end: 5px;
+    padding-inline-start: 5px;
+    margin-bottom: 20px;
+}
+
+.tool-two {
+    margin-bottom: 20px;
+}
+
+.tool-three {
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.share-btn {
+    background: #1E7CD3;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+}
+
+.upload-btn {
+    background: #1ed336;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+}
+
+.tool-one {
+    margin-top: 10px;
+    width: max-content;
+}
+
+.switch-line img {
+    height: 30px;
+    width: 30px;
+    background: #38ADCB;
+    border-radius: 5px;
+}
+
+.delete-btn img {
+    height: 30px;
+    width: 30px;
+    background-color: #EE695B;
+    border-radius: 5px;
+}
+
+.tool-three img {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.tool-three {
+    background: #19A59F;
+    border-radius: 15px;
+}
+
+.add-text img {
+    height: 30px;
+    width: 30px;
+    background: #3BC751;
+    border-radius: 5px;
+}
+
+.download-btn {
+    background: #8F44BB;
+    border-radius: 10px;
+    padding: 10px;
+    color: white
+}
+
+.user-msg {
+    background: aqua;
+    border-radius: 10px;
+    color: black;
+}
+
+.share-container {
+    font-size: 30px;
+}
+
+#file {
+    background: yellowgreen;
+}

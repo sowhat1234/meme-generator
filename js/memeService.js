@@ -6,10 +6,12 @@ var gMeme = {
     selectedLineIdx: 1,
     lines: [{
         id: 1,
-        txt: 'I sometimes eat Falafel',
-        size: 20,
-        align: 'left',
-        color: 'red'
+        txt: 'Enter Your Text HERE',
+        size: 30,
+        align: 'start',
+        color: 'black',
+        strokeColor: 'black',
+        pos: { x: 125, y: 50 }
     }]
 };
 
@@ -19,8 +21,8 @@ function getMeme() {
 
 
 function setLineTxt(txt) {
-    gMeme.lines.forEach(line=>{
-        if(line.id === gMeme.selectedLineIdx){
+    gMeme.lines.forEach(line => {
+        if (line.id === gMeme.selectedLineIdx) {
             line.txt = txt;
         };
     });
@@ -35,42 +37,49 @@ function setImgId(id) {
     gMeme.selectedImgId = id;
 }
 
-function getSelectedLine(){
-    return gMeme.lines.forEach(line=>{
-        if(line.id === gMeme.selectedLineIdx){
+function getSelectedLine() {
+    return gMeme.lines.forEach(line => {
+        if (line.id === gMeme.selectedLineIdx) {
             return line;
         }
     })
 }
 
-function updateLineId(){
+function updateLineId() {
     var length = gMeme.lines.length;
-    if(gMeme.selectedLineIdx < length){
+    if (gMeme.selectedLineIdx < length) {
         gMeme.selectedLineIdx++
-    }else if(gMeme.selectedLineIdx === length){
+    } else if (gMeme.selectedLineIdx === length) {
         gMeme.selectedLineIdx = 1;
     }
-    
+
 }
 
 function changeColor(color) {
-    // gMeme.lines[gMeme.selectedLineIdx].color = color;
     gMeme.lines.forEach(line => {
         if (line.id === gMeme.selectedLineIdx) {
             line.color = color
         };
     });
-    // gMeme.lines[0].color = color;
 };
 
-function addFontSize(){
+function changeStrokeColor(color) {
+    gMeme.lines.forEach(line => {
+        if (line.id === gMeme.selectedLineIdx) {
+            line.strokeColor = color
+        };
+    });
+}
+
+function addFontSize() {
     gMeme.lines.forEach(line => {
         if (line.id === gMeme.selectedLineIdx) {
             line.size++;
         };
     });
 }
-function decFontSize(){
+
+function decFontSize() {
     gMeme.lines.forEach(line => {
         if (line.id === gMeme.selectedLineIdx) {
             line.size--;
@@ -81,10 +90,25 @@ function decFontSize(){
 function addLineText() {
     gMeme.lines.push({
         id: gMeme.lines.length + 1,
-        txt: 'newText',
-        size: 20,
+        txt: 'Enter a text HERE',
+        size: 30,
         align: 'left',
-        color: 'red'
+        color: 'black',
+        pos: { x: 125, y: 400 }
     })
 
 }
+
+function getLinePos() {
+    gMeme.lines.forEach(line => {
+        line.pos = line
+    })
+}
+
+function removeLine() {
+    gMeme.lines.forEach(line => {
+        if (line.id === gMeme.selectedLineIdx) {
+            line.txt = '';
+        };
+    });
+};

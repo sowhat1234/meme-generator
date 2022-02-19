@@ -2,35 +2,70 @@
 
 var gElCanvas;
 var gCtx;
+var gisLineDrag = false;
+var gStartPos = {
+    x: null,
+    y: null
+};
 
 var textInput = document.querySelector('[name="text"]');
+var deleteInput = document.querySelector('[name="delete-btn"]');
 var hideGallery = document.querySelector('.img-gallery-container');
 var showCanvas = document.querySelector('.canvas-container');
 var contentNav = document.querySelector('.content-nav');
 var searchFilter = document.getElementById('searchInput');
+gElCanvas = document.querySelector('.canvas');
 
 textInput.addEventListener('keyup', () => {
     setLineTxt(textInput.value);
     renderMeme();
 })
 
-searchFilter.addEventListener('keyup',(e) => {
+searchFilter.addEventListener('keyup', (e) => {
     getImgKeyword(e.target.value);
 })
 
 function init() {
     renderImg(getImgs());
     renderCanvas();
+    addMouseListeners()
 }
 
 
-function downloadImg() {
-    var elLink = gMeme.selectedUrl
-    var imgContent = gElCanvas.toDataURL()
-    elLink.href = imgContent
-    elLink.dowmload = 'my-img.jpg'
-    // doesnt work
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mouseup', onUp)
 }
+
+
+
+
+function downloadImg(elLink) {
+    const data = gElCanvas.toDataURL();
+    elLink.href = data;
+    elLink.download = 'my-meme.jpg';
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    var reader = new FileReader()
+
+    reader.onload = function(event) {
+        console.log('onload');
+        var img = new Image()
+            // Render on canvas
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result
+        img = getImgs();
+    }
+    console.log('after');
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+
+
+
 
 function onImgSelect(url, id) {
     setImg(url.src);
@@ -61,33 +96,48 @@ function onAddLineText() {
 
 
 function onChangeColor(color) {
-    
+
     changeColor(color);
     renderMeme();
 }
 
+function onStrokeChangeColor(color) {
 
-function onFontBig(){
+    changeStrokeColor(color);
+    renderMeme();
+}
+
+
+function onFontBig() {
     addFontSize();
     renderMeme();
 }
-function onFontSmall(){
+
+function onFontSmall() {
     decFontSize();
     renderMeme();
 }
 
-function onChangeLineFocus(){
+function onChangeLineFocus() {
     updateLineId();
     updateInputText();
     renderMeme();
 };
 
-function updateInputText(){
+function onRemoveLine() {
+    removeLine();
+    updateInputText();
+    renderMeme();
+};
+
+function updateInputText() {
     textInput.value = '';
     var lineText = getSelectedLine();
-    
+
     textInput.value = lineText ? lineText.txt : '';
 }
+
+
 
 function renderCanvas() {
     gElCanvas = document.querySelector('.canvas');
@@ -98,9 +148,61 @@ function renderCanvas() {
 
 
 
+function onMove(ev) {
+    if (!gisLineDrag) return;
+    if (gStartPos != null) {
+        const pos = getEvPos(ev)
+        const dx = pos.x - gStartPos.pos.x
+        const dy = pos.y - gStartPos.pos.y
+        moveLine(dx, dy)
+        renderMeme()
+        renderCanvas()
+    }
 
 
-function getId(imgId) {
-    gImgs.find(img => imgId === img.url)
-    console.log(imgId);
+}
+
+
+function onDown(ev) {
+    gStartPos = isLineClicked(ev);
+    if (gStartPos != null) {
+        console.log('clicked mee');
+    }
+    gisLineDrag = true;
+    gElCanvas.style.cursor = 'grabbing'
+
+}
+
+function onUp() {
+    gisLineDrag = false;
+    gElCanvas.style.cursor = 'grab'
+}
+
+function moveLine(dx, dy) {
+    var lines = getMeme().lines[0].pos;
+    lines.x += dx
+    lines.y += dy
+
+}
+
+function isLineClicked(ev) {
+    var lines = getMeme().lines;
+    for (var i = 0; i < lines.length; i++) {
+        var lineX = lines[i].pos.x;
+        var lineY = lines[i].pos.y;
+        if (ev.offsetX > lineX && ev.offsetX < lineX + 320 && ev.offsetY > lineY - 20 && ev.offsetY < lineY + 10) {
+            return lines[i];
+        }
+    }
+    return null;
+}
+
+
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    return pos
 }

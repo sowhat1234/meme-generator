@@ -1,0 +1,107 @@
+#search-bar {
+    width: 500px;
+}
+
+.content-nav {
+    margin-block-start: 20px;
+    padding-top: 10px;
+}
+
+.main-content-bg {
+    width: 99vw;
+    background-color: #383B42;
+    border-right-style: groove;
+    border-left-style: groove;
+    border-radius: 15px;
+    border-width: 5px;
+}
+
+.search {
+    color: #555;
+    display: flex;
+    padding: 2px;
+    border: 1px solid currentColor;
+    border-radius: 20px;
+    width: 500px;
+}
+
+.search-bg {
+    background-color: #22252C;
+    width: 500px;
+    border-radius: 20px;
+}
+
+button[type="submit"] {
+    text-indent: -999px;
+    overflow: hidden;
+    width: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: whitesmoke url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.nav {
+    margin-block-start: 30px;
+    margin-right: 40px;
+}
+
+input[type="search"] {
+    border: none;
+    background: transparent;
+    margin: 0;
+    width: 500px;
+    padding: 7px 8px;
+    font-size: 16px;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    color: #909193;
+}
+
+input[type="search"]::placeholder {
+    color: #bbb;
+}
+
+button[type="submit"]:hover {
+    opacity: 1;
+}
+
+button[type="submit"]:focus,
+input[type="search"]:focus {
+    box-shadow: 0 0 3px 0 #1183d6;
+    border-color: #1183d6;
+    outline: none;
+}
+
+.toggle-menu-screen {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: rgba(42, 42, 42, 0.6);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transition: opacity .5s;
+}
+
+.open .toggle-menu-screen {
+    visibility: visible;
+    opacity: 1;
+}
+
+.toggle-menu-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.75rem;
+    padding: 20px;
+    display: none;
+}
