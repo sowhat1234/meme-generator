@@ -6,19 +6,20 @@ var gMeme = {
     selectedLineIdx: 1,
     lines: [{
         id: 1,
-        txt: 'Enter Your Text HERE',
+        txt: 'Enter Your Text ',
         size: 30,
-        align: 'start',
+        align: 'center',
         color: 'black',
         strokeColor: 'black',
-        pos: { x: 125, y: 50 }
+        width: null,
+        height: null,
+        pos: { x: gElCanvas.width / 2, y: gElCanvas.height / 10 }
     }]
 };
 
 function getMeme() {
     return gMeme;
 }
-
 
 function setLineTxt(txt) {
     gMeme.lines.forEach(line => {
@@ -28,13 +29,16 @@ function setLineTxt(txt) {
     });
 };
 
-
 function setImg(url) {
     gMeme.selectedUrl = url;
 }
 
 function setImgId(id) {
     gMeme.selectedImgId = id;
+}
+
+function setSelectedLineIdx(lineIdx) {
+    gMeme.selectedLineIdx = lineIdx;
 }
 
 function getSelectedLine() {
@@ -87,17 +91,42 @@ function decFontSize() {
     });
 }
 
-function addLineText() {
-    gMeme.lines.push({
+function addLine() {
+    var posX = gElCanvas.width / 2
+    var posY;
+    if (gMeme.lines.length === 0) {
+        posY = gElCanvas.height / 10
+    } else if (gMeme.lines.length === 1) {
+        posY = gElCanvas.height / 1.1
+    } else {
+        posY = gElCanvas.height / 2
+    }
+
+    gMeme.lines.push(addLineText(posX, posY));
+}
+
+function addLineText(x, y) {
+    return {
         id: gMeme.lines.length + 1,
-        txt: 'Enter a text HERE',
+        txt: 'Enter Your Text ',
         size: 30,
-        align: 'left',
+        align: 'center',
         color: 'black',
-        pos: { x: 125, y: 400 }
-    })
+        strokeColor: 'black',
+        width: null,
+        height: null,
+        pos: { x, y }
+    }
 
 }
+
+function setTextAlign(align) {
+    gMeme.lines.forEach(line => {
+        if (line.id === gMeme.selectedLineIdx) {
+            line.align = align;
+        };
+    });
+};
 
 function getLinePos() {
     gMeme.lines.forEach(line => {
@@ -105,10 +134,13 @@ function getLinePos() {
     })
 }
 
+function getSelectedLineIdx() {
+    return gMeme.selectedLineIdx;
+}
+
 function removeLine() {
-    gMeme.lines.forEach(line => {
-        if (line.id === gMeme.selectedLineIdx) {
-            line.txt = '';
-        };
-    });
-};
+    if (getSelectedLineIdx() > 0) {
+        gMeme.lines.splice(getSelectedLine(), 1);
+    }
+    gMeme.lines.splice(getSelectedLineIdx(), 1);
+}

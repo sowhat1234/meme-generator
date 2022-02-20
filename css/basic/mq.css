@@ -28,6 +28,7 @@
     }
     .hide {
         display: none;
+        flex: unset
     }
     input[type="search"] {
         width: 93vw;

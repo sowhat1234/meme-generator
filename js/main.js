@@ -31,16 +31,16 @@ function init() {
     addMouseListeners()
 }
 
-
-
 function addMouseListeners() {
     gElCanvas.addEventListener('mousemove', onMove)
     gElCanvas.addEventListener('mousedown', onDown)
     gElCanvas.addEventListener('mouseup', onUp)
 }
 
-
-
+function onSetTextAlign(align) {
+    setTextAlign(align)
+    renderMeme()
+}
 
 function downloadImg(elLink) {
     const data = gElCanvas.toDataURL();
@@ -54,7 +54,6 @@ function loadImageFromInput(ev, onImageReady) {
     reader.onload = function(event) {
         console.log('onload');
         var img = new Image()
-            // Render on canvas
         img.onload = onImageReady.bind(null, img)
         img.src = event.target.result
         img = getImgs();
@@ -62,10 +61,6 @@ function loadImageFromInput(ev, onImageReady) {
     console.log('after');
     reader.readAsDataURL(ev.target.files[0])
 }
-
-
-
-
 
 function onImgSelect(url, id) {
     setImg(url.src);
@@ -78,7 +73,6 @@ function onImgSelect(url, id) {
     renderMeme();
 }
 
-
 function backToGallery() {
     showCanvas.classList.remove('show')
     showCanvas.classList.add('hide')
@@ -90,10 +84,9 @@ function backToGallery() {
 
 function onAddLineText() {
 
-    addLineText();
+    addLine();
     renderMeme();
 }
-
 
 function onChangeColor(color) {
 
@@ -106,7 +99,6 @@ function onStrokeChangeColor(color) {
     changeStrokeColor(color);
     renderMeme();
 }
-
 
 function onFontBig() {
     addFontSize();
@@ -137,8 +129,6 @@ function updateInputText() {
     textInput.value = lineText ? lineText.txt : '';
 }
 
-
-
 function renderCanvas() {
     gElCanvas = document.querySelector('.canvas');
     gCtx = gElCanvas.getContext('2d');
@@ -146,27 +136,24 @@ function renderCanvas() {
 
 }
 
-
-
 function onMove(ev) {
     if (!gisLineDrag) return;
     if (gStartPos != null) {
         const pos = getEvPos(ev)
-        const dx = pos.x - gStartPos.pos.x
-        const dy = pos.y - gStartPos.pos.y
+        const dx = pos.x - gStartPos.x
+        const dy = pos.y - gStartPos.y
+        gStartPos = pos
         moveLine(dx, dy)
         renderMeme()
         renderCanvas()
     }
-
-
 }
 
-
 function onDown(ev) {
+    var pos = getEvPos(ev)
     gStartPos = isLineClicked(ev);
     if (gStartPos != null) {
-        console.log('clicked mee');
+        gStartPos = pos
     }
     gisLineDrag = true;
     gElCanvas.style.cursor = 'grabbing'
@@ -175,34 +162,41 @@ function onDown(ev) {
 
 function onUp() {
     gisLineDrag = false;
+    gStartPos = null;
     gElCanvas.style.cursor = 'grab'
 }
 
 function moveLine(dx, dy) {
-    var lines = getMeme().lines[0].pos;
-    lines.x += dx
-    lines.y += dy
-
+    var lines = getMeme().lines;
+    lines.forEach(line => {
+        if (line.id === gMeme.selectedLineIdx) {
+            const pos = line.pos;
+            pos.x += dx
+            pos.y += dy
+        }
+        return line
+    })
 }
 
-function isLineClicked(ev) {
+function isLineClicked(clickedPos) {
     var lines = getMeme().lines;
+
     for (var i = 0; i < lines.length; i++) {
-        var lineX = lines[i].pos.x;
-        var lineY = lines[i].pos.y;
-        if (ev.offsetX > lineX && ev.offsetX < lineX + 320 && ev.offsetY > lineY - 20 && ev.offsetY < lineY + 10) {
+        var pos = lines[i].pos;
+        var width = lines[i].width;
+        var height = lines[i].height;
+        if (clickedPos.offsetX - width / 2 <= pos.x + (width / 2) && clickedPos.offsetX + width / 2 >= pos.x - (width / 2) && clickedPos.offsetY <= pos.y && clickedPos.offsetY >= pos.y - height) {
+            setSelectedLineIdx(i + 1)
             return lines[i];
         }
     }
     return null;
 }
 
-
-
 function getEvPos(ev) {
     var pos = {
         x: ev.offsetX,
         y: ev.offsetY
     }
-    return pos
-}
+    return pos;
+};
